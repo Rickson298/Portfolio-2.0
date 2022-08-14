@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { animationToggleTheme } from "./animation";
 import { ContainerMoon, ContainerSun, StickySun } from "./styles";
@@ -14,22 +14,18 @@ export function SunMoonTheme() {
     <>
       <AnimatePresence exitBeforeEnter>
         {currentTheme === "sun" ? (
-          <ContainerSun
-            onClick={toggleTheme}
-            key="sun"
-            {...animationToggleTheme}
-          >
-            <StickySun top="-15px" left="50%" />
-            <StickySun top="45px" left="50%" />
-            <StickySun left="-15px" top="50%" horizontal />
-            <StickySun left="45px" top="50%" horizontal />
-          </ContainerSun>
+          <motion.div key="sun" {...animationToggleTheme}>
+            <ContainerSun onClick={toggleTheme}>
+              <StickySun top="-15px" left="50%" />
+              <StickySun top="45px" left="50%" />
+              <StickySun left="-15px" top="50%" horizontalPosition />
+              <StickySun left="45px" top="50%" horizontalPosition />
+            </ContainerSun>
+          </motion.div>
         ) : (
-          <ContainerMoon
-            onClick={toggleTheme}
-            key="moon"
-            {...animationToggleTheme}
-          />
+          <motion.div key="moon" {...animationToggleTheme}>
+            <ContainerMoon onClick={toggleTheme} />
+          </motion.div>
         )}
       </AnimatePresence>
       <button style={{ marginTop: "50px" }} onClick={toggleTheme}>

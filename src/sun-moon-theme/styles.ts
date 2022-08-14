@@ -2,10 +2,10 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-export const StickySun = styled(motion.span)<{
+export const StickySun = styled.span<{
   top?: string;
   left?: string;
-  horizontal?: boolean;
+  horizontalPosition?: boolean;
 }>`
   ${(props) => css`
     height: 10px;
@@ -16,11 +16,12 @@ export const StickySun = styled(motion.span)<{
     position: absolute;
     top: ${props.top || "unset"};
     left: ${props.left || "unset"};
-    transform: translate(-50%, -50%) ${props.horizontal && "rotate(-90deg)"};
+    transform: translate(-50%, -50%)
+      ${props.horizontalPosition && "rotate(-90deg)"};
   `}
 `;
 
-export const ContainerSun = styled(motion.div)`
+export const ContainerSun = styled.div`
   background: #ffff00;
   width: 30px;
   height: 30px;
@@ -38,7 +39,7 @@ export const ContainerSun = styled(motion.div)`
   }
 `;
 
-export const ContainerMoon = styled(motion.div)`
+export const ContainerMoon = styled.div`
   background: #c9c9c9;
   width: 30px;
   height: 30px;
